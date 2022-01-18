@@ -1,10 +1,11 @@
 Fragmentation Replication Instructions
 
 1) instal requiered software
- visit https://github.com/Hintzelab/MABE/wiki
- follow instructions in: Installation and quick start
+	visit https://github.com/Hintzelab/MABE/wiki
+	follow instructions in: Installation and quick start
  
- This will go through the process of installing MABE and all requierments. You don't need to compile MABE, but it's not going to hurt, and will make you farmiliar with the process.
+	This will go through the process of installing MABE and all requierments. 
+	You don't need to compile MABE, but it's not going to hurt, and will make you farmiliar with the process.
  
 2) download this repository
 
@@ -32,7 +33,7 @@ Fragmentation Replication Instructions
 	this will run MABE in analyze mode for the given condition and rep number
 	note: if you change the conditions or rep numbers you will need to change the path argument
 	note: if you run again with a different condition or rep number the current data will be overwritten
- c)to create a Fragmentation Matrix plot:
+ c) to create a Fragmentation Matrix plot:
 	run 'python makeFragVisualization.py -fragMap fragMap_75_100 -fileName R_with_inputs_FragmentationMatrix_id_0.py -skipRange .025 .99 -fontSize 4 -saveName FragMatrix.pdf'
 	note: this will save the image FragMatrix.pdf
 	note: you can run python makeFragVisualization.py -h to see other options
