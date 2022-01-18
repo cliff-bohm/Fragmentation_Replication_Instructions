@@ -1,74 +1,78 @@
-# Fragmentation_Replication_Instructions
+#Fragmentation_Replication_Instructions
 
-1) instal requiered software
+##1) instal requiered software
+
+    a) visit https://github.com/Hintzelab/MABE/wiki
+
+    b) follow instructions in: Installation and quick start
  
-&ensp visit https://github.com/Hintzelab/MABE/wiki
- 
-&ensp follow instructions in: Installation and quick start
- 
-&ensp This will go through the process of installing MABE and all requierments. You don't need to compile MABE, but it's not going to hurt, and will make you farmiliar with the process.
+        This will go through the process of installing MABE and all requierments. 
+        
+        You don't need to compile MABE, but it's not going to hurt, and will make you farmiliar with the process.
  
  
 2) download this repository
 
 3) build MABE
+
+    a) navigate to the main level of the downloaded repository (here you should see modules.txt, and the tools and code directories along with some other files and directories)
  
-&ensp a) navigate to the main level of the downloaded repository (here you should see modules.txt, and the tools and code directories along with some other files and directories)
+    b) from the command line, run 'sh tools/setup.cmd'
+
+        this will get the correct version of mbuild for your operating system
  
-&ensp b) from the command line, run 'sh tools/setup.cmd'
-&ensp this will get the correct version of mbuild for your operating system
+    c) from the command line run './mbuild' (or ./mbuild.exe if on windows)
+
+        this will build MABE with the requiered modules
  
-&ensp c) from the command line run './mbuild' (or ./mbuild.exe if on windows)
-&ensp this will build MABE with the requiered modules
+    d) run 'cd work'
  
-&ensp d) run 'cd work'
- 
-&ensp e) run 'cp ../runFiles/*' .
+    e) run 'cp ../runFiles/*' .
  
  
  
 4) run experiments
  
-&enspa) from the command line run 'python ../tools/mq.py'
+    a) from the command line run 'python ../tools/mq.py'
 
-&ensp you should see some output that says that 3 jobs will be run (BlockCatch with Markov Brains and RNN and NBack with RNN)
+        you should see some output that says that 3 jobs will be run (BlockCatch with Markov Brains and RNN and NBack with RNN)
  
-&ensp b) run 'python ../tools/mq.py -l'
+    b) run 'python ../tools/mq.py -l'
 
-&ensp this will run the 3 jobs using random seed 101 for each - this may take a long time!
+        this will run the 3 jobs using random seed 101 for each - this may take a long time!
 
-&ensp the results will be in directories starting with 'C' and then the conditoin number and desciption
+        the results will be in directories starting with 'C' and then the conditoin number and desciption
 
-&ensp each condition directory will contain the reps run for the condition, and each rep directory will contain the data files.
+        each condition directory will contain the reps run for the condition, and each rep directory will contain the data files.
  
-&ensp c) for more on running MABE and using mq see https://github.com/Hintzelab/MABE/wiki 
+    c) for more on running MABE and using mq see https://github.com/Hintzelab/MABE/wiki 
 
-&ensp 5) generating Fragmentation Matrix and Data Flow plots
+5) generating Fragmentation Matrix and Data Flow plots
 
-&ensp a) once you have run the conditions you are interested in visualizing, run 'cd ../analyze'
+    a) once you have run the conditions you are interested in visualizing, run 'cd ../analyze'
 
-&ensp b) run 'python analyzeSingle.py ../../C0__WRLD_BlockCatch__BRN_Markov__UPD_20000/101/'
+    b) run 'python analyzeSingle.py ../../C0__WRLD_BlockCatch__BRN_Markov__UPD_20000/101/'
 
-&ensp this will run MABE in analyze mode for the given condition and rep number
+        this will run MABE in analyze mode for the given condition and rep number
 
-&ensp note: if you change the conditions or rep numbers you will need to change the path argument
+        note: if you change the conditions or rep numbers you will need to change the path argument
 
-&ensp note: if you run again with a different condition or rep number the current data will be overwritten
+        note: if you run again with a different condition or rep number the current data will be overwritten
 
-&ensp c)to create a Fragmentation Matrix plot:
+    c)to create a Fragmentation Matrix plot:
 
-&ensp run 'python makeFragVisualization.py -fragMap fragMap_75_100 -fileName R_with_inputs_FragmentationMatrix_id_0.py -skipRange .025 .99 -fontSize 4 -saveName FragMatrix.pdf'
+        run 'python makeFragVisualization.py -fragMap fragMap_75_100 -fileName R_with_inputs_FragmentationMatrix_id_0.py -skipRange .025 .99 -fontSize 4 -saveName FragMatrix.pdf'
 
-&ensp note: this will save the image FragMatrix.pdf
+        ote: this will save the image FragMatrix.pdf
 
-&ensp note: you can run python makeFragVisualization.py -h to see other options
+        note: you can run python makeFragVisualization.py -h to see other options
 
-&ensp d) to create a Data Flow plot:
+    d) to create a Data Flow plot:
 
-&ensp when you ran the analysis, a set of files called, flowPlot_0_25_id_0.dot, flowPlot_0_100_id_0.dot, and flowPlot_75_100_id_0.dot were generated
+    when you ran the analysis, a set of files called, flowPlot_0_25_id_0.dot, flowPlot_0_100_id_0.dot, and flowPlot_75_100_id_0.dot were generated
 
-&ensp these file have early (0_25 = first 25%), full (0_100 = full), and late (75_100 = last 25%) life data flow data.
+    these file have early (0_25 = first 25%), full (0_100 = full), and late (75_100 = last 25%) life data flow data.
 
-&ensp these files are formatted to work with graphviz, the fastest way to view them is with an online viewer such as: dreampuf.github.io/GraphvizOnline
+    these files are formatted to work with graphviz, the fastest way to view them is with an online viewer such as: dreampuf.github.io/GraphvizOnline
 
-&ensp navigate to the viewer of your choice and copy the contents to the file you want to view into the viewer (the 'cat' command is useful to see the file contents)
+    navigate to the viewer of your choice and copy the contents to the file you want to view into the viewer (the 'cat' command is useful to see the file contents)
