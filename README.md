@@ -1,25 +1,38 @@
 # Fragmentation_Replication_Instructions
 
-1) instal requiered software
+##1) instal requiered software
+ 
  visit https://github.com/Hintzelab/MABE/wiki
+ 
  follow instructions in: Installation and quick start
  
  This will go through the process of installing MABE and all requierments. You don't need to compile MABE, but it's not going to hurt, and will make you farmiliar with the process.
  
+ 
 2) download this repository
 
 3) build MABE
+ 
  a) navigate to the main level of the downloaded repository (here you should see modules.txt, and the tools and code directories along with some other files and directories)
+ 
  b) from the command line, run 'sh tools/setup.cmd'
 	this will get the correct version of mbuild for your operating system
+ 
  c) from the command line run './mbuild' (or ./mbuild.exe if on windows)
 	this will build MABE with the requiered modules
+ 
  d) run 'cd work'
+ 
  e) run 'cp ../runFiles/*' .
  
+ 
+ 
 4) run experiments
+ 
  a) from the command line run 'python ../tools/mq.py'
-	you should see some output that says that 3 jobs will be run (BlockCatch with Markov Brains and RNN and NBack with RNN)
+
+you should see some output that says that 3 jobs will be run (BlockCatch with Markov Brains and RNN and NBack with RNN)
+ 
  b) run 'python ../tools/mq.py -l'
 	this will run the 3 jobs using random seed 101 for each - this may take a long time!
 	the results will be in directories starting with 'C' and then the conditoin number and desciption
