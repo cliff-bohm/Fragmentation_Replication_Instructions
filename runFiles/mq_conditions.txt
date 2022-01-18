@@ -1,0 +1,81 @@
+
+REPS = 101 101
+
+CONSTANT = ARCHIVIST-outputMethod LODwAP
+
+CONSTANT = ARCHIVIST_DEFAULT-realtimeSequence :10 
+CONSTANT = ARCHIVIST_DEFAULT-snapshotDataSequence :100 
+CONSTANT = ARCHIVIST_DEFAULT-snapshotOrganismsSequence :1000
+CONSTANT = ARCHIVIST_DEFAULT-writeMaxFile 1
+CONSTANT = ARCHIVIST_DEFAULT-writePopFile 1
+CONSTANT = ARCHIVIST_DEFAULT-writeSnapshotDataFiles 0
+CONSTANT = ARCHIVIST_DEFAULT-writeSnapshotOrganismsFiles 0
+
+CONSTANT = ARCHIVIST_LODWAP-dataSequence :100
+CONSTANT = ARCHIVIST_LODWAP-filePrefix NONE
+CONSTANT = ARCHIVIST_LODWAP-organismsSequence :1000
+CONSTANT = ARCHIVIST_LODWAP-pruneInterval 100
+CONSTANT = ARCHIVIST_LODWAP-terminateAfter 10
+CONSTANT = ARCHIVIST_LODWAP-writeDataFile 1
+CONSTANT = ARCHIVIST_LODWAP-writeOrganismsFile 1
+
+CONSTANT = OPTIMIZER-optimizer Tournament
+CONSTANT = OPTIMIZER_TOURNAMENT-minimizeError 0 
+
+CONSTANT = OPTIMIZER_TOURNAMENT-numberParents 1
+CONSTANT = OPTIMIZER_TOURNAMENT-optimizeValue DM_AVE[score]
+CONSTANT = OPTIMIZER_TOURNAMENT-tournamentSize 5
+
+CONSTANT = WORLD_BLOCKCATCH-patternsToCatch 111R,11L,11R
+CONSTANT = WORLD_BLOCKCATCH-patternsToMiss 111L,1111L,1111R
+CONSTANT = WORLD_BLOCKCATCH-startYMax 31
+CONSTANT = WORLD_BLOCKCATCH-startYMin 31
+CONSTANT = WORLD_BLOCKCATCH-worldXMax 20
+CONSTANT = WORLD_BLOCKCATCH-worldXMin 20
+
+CONSTANT = WORLD_NBACK-NsList 1,3,5,7,8:-1
+CONSTANT = WORLD_NBACK-evaluationsPerGeneration 25
+CONSTANT = WORLD_NBACK-testsPerEvaluation 25
+
+CONSTANT = BRAIN_RNN-biasRange -3,3
+CONSTANT = BRAIN_RNN-weightRangeMapping 0,1,2,1,0
+CONSTANT = BRAIN_RNN-discretizeRecurrent 1
+
+CONSTANT = GENOME_CIRCULAR-mutationCopyRate 0
+CONSTANT = GENOME_CIRCULAR-mutationDeleteRate 0
+CONSTANT = GENOME_CIRCULAR-mutationIndelMaxSize 500
+CONSTANT = GENOME_CIRCULAR-mutationIndelMinSize 8
+CONSTANT = GENOME_CIRCULAR-mutationIndelRate .00005
+CONSTANT = GENOME_CIRCULAR-mutationPointOffsetRange 10
+CONSTANT = GENOME_CIRCULAR-mutationPointOffsetRate .005
+CONSTANT = GENOME_CIRCULAR-sizeInitial 2000
+
+# VAR = [SHORT NAME]	[REAL NAME]	[conditon1,condition2,etc.]
+VAR = WRLD      WORLD-worldType
+VAR = BRN       BRAIN-brainType
+VAR = UPD       GLOBAL-updates
+
+# Alternatively to VAR/EXCEPT, conditions can achieve a similar effect and still respect EXCEPT declarations
+CONDITIONS = WRLD=BlockCatch BRN=Markov,RNN UPD=2000
+CONDITIONS = WRLD=NBack      BRN=Markov UPD=2000
+
+# list of setting files (.cfg) which you want MABE to load with the -f option. files will be loaded in the order provided.
+SETTINGS = settings.cfg,settings_organism.cfg,settings_world.cfg
+
+# JOBNAME will be appended before condition (C*) identifier - if "NONE" then job will have not JOBNAME
+JOBNAME = NONE
+
+# EXECUTABLE is the name of program to run, may include a path
+EXECUTABLE = ./mabe
+#EXECUTABLE = mabe.exe
+
+-----
+# comma separate the mail type list ex: FAIL,END,REQUEUE
+
+# HPCC (not used for indefinite mode)
+HPCC_PARAMETERS = #SBATCH --constraint="[intel14|intel16|intel18]"
+HPCC_PARAMETERS = #SBATCH --ntasks=1
+HPCC_PARAMETERS = #SBATCH --cpus-per-task=1
+HPCC_PARAMETERS = #SBATCH --time=03:55:00  #WARNING indefinite requires 03:51:00 or greater
+HPCC_PARAMETERS = #SBATCH --mem=2G
+HPCC_PARAMETERS = #SBATCH --mail-type=FAIL
