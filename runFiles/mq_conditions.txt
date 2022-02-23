@@ -38,7 +38,7 @@ CONSTANT = WORLD_NBACK-evaluationsPerGeneration 25
 CONSTANT = WORLD_NBACK-testsPerEvaluation 25
 
 CONSTANT = BRAIN_RNN-biasRange -3,3
-CONSTANT = BRAIN_RNN-weightRangeMapping 0,1,2,1,0
+CONSTANT = BRAIN_RNN-weightRangeMapping 0,1,0,1,0
 CONSTANT = BRAIN_RNN-discretizeRecurrent 1
 
 CONSTANT = GENOME_CIRCULAR-mutationCopyRate 0
